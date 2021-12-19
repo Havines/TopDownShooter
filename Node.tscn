@@ -11,24 +11,31 @@ font_data = ExtResource( 2 )
 size = 50
 font_data = ExtResource( 2 )
 
-[node name="Node" type="Node"]
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1950.0
-margin_bottom = 1100.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 
 [node name="Label" type="Label" parent="."]
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-margin_left = -147.042
-margin_top = 290.655
-margin_right = 170.958
-margin_bottom = 397.655
-custom_fonts/font = SubResource( 1 )
+anchor_bottom = 0.5
+margin_left = -159.0
+margin_top = -53.5
+margin_right = 159.0
+margin_bottom = 53.5
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 1, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
 text = "DOKA 2"
 
 [node name="Button" type="Button" parent="."]
@@ -36,11 +43,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -88.5
-margin_top = -37.0
-margin_right = 88.5
-margin_bottom = 37.0
-rect_scale = Vector2( 1.3, 1.3 )
+margin_left = -100.0
+margin_top = 60.0
+margin_right = 100.0
+margin_bottom = 150.0
 custom_fonts/font = SubResource( 2 )
 text = "Start"
+
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

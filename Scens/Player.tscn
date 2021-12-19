@@ -72,6 +72,7 @@ text = "35/35"
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 position = Vector2( -0.65078, 0 )
 occluder = SubResource( 2 )
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="Timer/anim" to="." method="_on_anim_timeout"]
 [connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
