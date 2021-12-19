@@ -1,0 +1,263 @@
+[gd_scene load_steps=30 format=2]
+
+[ext_resource path="res://Sprites/Ground_grass.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/Ground_grass_n.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Ground_grass+.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Ground_grass+_n.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/Ground_grass++.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Ground_grass++_n.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Ground_Kalitka.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Ground_Kalitka_n.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Ground_Asphalt.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Ground_Asphalt_n.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Ground_Asphalt+.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Ground_Asphalt+_n.png" type="Texture" id=12]
+[ext_resource path="res://Sprites/Ground_Asphalt++.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Ground_Asphalt++_n.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Ground_Asphalt_Fonar.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Ground_Asphalt_Fonar_n.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Ground_land.png" type="Texture" id=17]
+[ext_resource path="res://Sprites/Ground_land_n.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Ground_grass+-.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Ground_grass+-_n.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/Chest.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Chest_n.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Chest_break.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/Building.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/Building_n.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/Building_2.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/Building_3.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/Building_4.png" type="Texture" id=28]
+
+[sub_resource type="OccluderPolygon2D" id=1]
+
+closed = true
+cull_mode = 2
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+
+[node name="TileSet" type="Node2D"]
+
+[node name="Ground_grass" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 1 )
+normal_map = ExtResource( 2 )
+
+[node name="Ground_grass2" type="Sprite" parent="." index="1"]
+
+position = Vector2( 81.9323, 0 )
+texture = ExtResource( 3 )
+normal_map = ExtResource( 4 )
+
+[node name="Ground_grass3" type="Sprite" parent="." index="2"]
+
+position = Vector2( 168.959, 0 )
+texture = ExtResource( 5 )
+normal_map = ExtResource( 6 )
+
+[node name="Wall" type="Sprite" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( 252.731, 0 )
+texture = ExtResource( 7 )
+normal_map = ExtResource( 8 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -31.9959, 3.01153, 31.997, 3.00413, 31.9813, 10.9901, -31.9844, 11.0272 )
+
+[node name="Ground_Asphalt" type="Sprite" parent="." index="4"]
+
+position = Vector2( 340.719, 0.645423 )
+texture = ExtResource( 9 )
+normal_map = ExtResource( 10 )
+
+[node name="Ground_Asphalt+" type="Sprite" parent="." index="5"]
+
+position = Vector2( 423.281, 0.0151753 )
+texture = ExtResource( 11 )
+normal_map = ExtResource( 12 )
+
+[node name="Ground_Asphalt++" type="Sprite" parent="." index="6"]
+
+position = Vector2( 506.474, 0.645423 )
+texture = ExtResource( 13 )
+normal_map = ExtResource( 14 )
+
+[node name="Ground_Asphalt_Fonar" type="Sprite" parent="." index="7"]
+
+editor/display_folded = true
+position = Vector2( 591.556, 1.90547 )
+texture = ExtResource( 15 )
+normal_map = ExtResource( 16 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground_Asphalt_Fonar" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground_Asphalt_Fonar/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -2.16071, -6.11129, -4.74615, -3.22753, -4.94501, 2.54, -1.86237, 5.32432, 2.91077, 5.5232, 5.99341, 2.24168, 5.89484, -3.56058, 3.01019, -6.11129 )
+
+[node name="Ground_land" type="Sprite" parent="." index="8"]
+
+position = Vector2( 82.7954, 67.1876 )
+texture = ExtResource( 17 )
+normal_map = ExtResource( 18 )
+
+[node name="Ground_grass+-" type="Sprite" parent="." index="9"]
+
+position = Vector2( 169.932, 69.944 )
+texture = ExtResource( 19 )
+normal_map = ExtResource( 20 )
+
+[node name="Chest" type="Sprite" parent="." index="10"]
+
+editor/display_folded = true
+position = Vector2( 253.432, 69.9259 )
+texture = ExtResource( 21 )
+normal_map = ExtResource( 22 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Chest" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Chest/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Chest" index="1"]
+
+occluder = SubResource( 1 )
+light_mask = 1
+
+[node name="Chest2" type="Sprite" parent="." index="11"]
+
+editor/display_folded = true
+position = Vector2( 253.432, 147.541 )
+texture = ExtResource( 23 )
+normal_map = ExtResource( 22 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Chest2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Chest2/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Chest2" index="1"]
+
+occluder = SubResource( 1 )
+light_mask = 1
+
+[node name="Build_1" type="Sprite" parent="." index="12"]
+
+position = Vector2( 341, 71 )
+texture = ExtResource( 24 )
+normal_map = ExtResource( 25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Build_1" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Build_1/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+
+[node name="Build_2" type="Sprite" parent="." index="13"]
+
+editor/display_folded = true
+position = Vector2( 421.125, 71 )
+texture = ExtResource( 26 )
+normal_map = ExtResource( 25 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Build_2" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Build_2/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+
+[node name="Build_3" type="Sprite" parent="." index="14"]
+
+editor/display_folded = true
+position = Vector2( 502.143, 71 )
+texture = ExtResource( 27 )
+normal_map = ExtResource( 10 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Build_3" index="0"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Build_3/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -32, -32, -32, 32, 32, 32, 32, -32 )
+
+[node name="Build_4" type="Sprite" parent="." index="15"]
+
+position = Vector2( 581.173, 74.778 )
+texture = ExtResource( 28 )
+normal_map = ExtResource( 10 )
+
+

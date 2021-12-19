@@ -1,0 +1,131 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://Script/Bullet.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Bullet.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Light_al.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 5.73704
+
+[sub_resource type="Gradient" id=2]
+colors = PoolColorArray( 0.995972, 1, 0.871094, 1, 1, 0.985046, 0.0429688, 1 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.371094 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 6.0
+flag_rotate_y = true
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 90.0
+angular_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 100.0
+tangential_accel = 100.0
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 0.768555 ), 0.0, 0.0, 0, 0, Vector2( 0.995143, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 1
+emission_sphere_radius = 12.0
+flag_rotate_y = true
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 155.0
+angular_velocity = 100.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = 100.0
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 8 )
+color = Color( 0.597656, 0, 0, 1 )
+
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 7.64435
+height = 0.781235
+
+[node name="Bullet" type="KinematicBody2D"]
+scale = Vector2( 0.8, 0.25 )
+collision_mask = 0
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0.252319, 0.0234375, 1 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+modulate = Color( 0.745117, 0.875, 0, 0.33702 )
+position = Vector2( -17.7362, -0.301464 )
+scale = Vector2( 4.19165, 0.552276 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 0.227975, 0.0827751 )
+scale = Vector2( 0.762209, 0.833036 )
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+offset = Vector2( -5, 0 )
+texture_scale = 2.2
+color = Color( 0.996094, 0.759899, 0.132294, 1 )
+energy = 3.5
+range_height = 1.0
+
+[node name="Sparks" type="Particles2D" parent="."]
+position = Vector2( 0, 2.98023e-008 )
+rotation = 3.14036
+emitting = false
+amount = 5
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource( 6 )
+texture = ExtResource( 2 )
+
+[node name="Blood" type="Particles2D" parent="."]
+visible = false
+position = Vector2( -2.16116, 0.358986 )
+scale = Vector2( 0.85, 0.85 )
+emitting = false
+amount = 5
+lifetime = 0.9
+one_shot = true
+explosiveness = 1.0
+draw_order = 1
+process_material = SubResource( 9 )
+texture = ExtResource( 2 )
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0.347214, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 10 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

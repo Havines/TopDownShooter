@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Script/Enemy_shooting.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Zombi.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Zombi_n.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 537.912
+
+[sub_resource type="OccluderPolygon2D" id=2]
+cull_mode = 2
+polygon = PoolVector2Array( -5.25962, -8.72941, -9.41465, -5.84397, -11.2998, -0.881022, -9.14534, 6.46722, -5.45198, 8.69863, 2.07574, 6.4718, -1.18808, -0.0905504, 2.07574, -5.33349 )
+
+[node name="Enemy_shooting" type="KinematicBody2D"]
+scale = Vector2( 1.7, 1.7 )
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 1.1, 1.1 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 3 )
+hframes = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( 2.13144, -0.127886 )
+polygon = PoolVector2Array( -8.82591, -8.6865, -11.6394, -4.72202, -13.7709, -0.714913, -11.5542, 4.65632, -8.61277, 8.36502, -2.26116, 7.76112, -1.83479, -0.0754814, -1.74159, -6.17295 )
+
+[node name="Area2D2" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+shape = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+position = Vector2( 2.38721, 0.341031 )
+polygon = PoolVector2Array( -7.97334, -10.6048, -11.8099, -6.29929, -13.6003, -1.05594, -11.8526, 5.50889, -7.63231, 8.87657, -3.87195, 7.83488, 6.43178, 5.554, -2.01623, -0.225882, 6.64537, -5.12568, -3.6252, -7.70604 )
+
+[node name="Anim" type="Timer" parent="."]
+wait_time = 0.1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+rotation = -1.57101
+
+[node name="Path" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource( 2 )
+[connection signal="body_entered" from="Area2D2" to="." method="_on_Area2D2_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Anim" to="." method="_on_Anim_timeout"]
+[connection signal="timeout" from="Path" to="." method="_on_Path_timeout"]

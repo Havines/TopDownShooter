@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Script/Player.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Person.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Person_n.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Light_al.png" type="Texture" id=4]
+[ext_resource path="res://12168.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 17
+font_data = ExtResource( 5 )
+
+[sub_resource type="OccluderPolygon2D" id=2]
+cull_mode = 2
+polygon = PoolVector2Array( -13.9818, -21.4906, -28.4617, -11.4593, -28.6362, 3.45671, -14.3307, 15.9304, -1.94429, 7.90536, -1.85707, -12.3316 )
+
+[node name="Player" type="KinematicBody2D"]
+position = Vector2( 0.292389, -2.04673 )
+scale = Vector2( 1.4, 1.4 )
+collision_layer = 3
+collision_mask = 2
+script = ExtResource( 1 )
+MOUTION = 400
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2.1, 2.1 )
+texture = ExtResource( 2 )
+normal_map = ExtResource( 3 )
+offset = Vector2( 0, -1 )
+hframes = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -0.13148, -1.97223 )
+polygon = PoolVector2Array( 3.83115, -3.4904, 17.7683, 0.585559, 18.4257, 3.21521, 2.38484, 6.23932, -14.7079, 13.0764, -28.3821, 6.23932, -30.8803, -0.597785, -27.3303, -6.77747, -14.7079, -14.9294 )
+
+[node name="Light2D" type="Light2D" parent="."]
+visible = false
+position = Vector2( 33.8497, 1.06475 )
+rotation = 1.5708
+scale = Vector2( 0.8, 1 )
+texture = ExtResource( 4 )
+texture_scale = 4.2
+color = Color( 0.996094, 0.163422, 0, 1 )
+energy = 7.0
+shadow_color = Color( 1, 0.25, 0.25, 0 )
+
+[node name="Position2D" type="Position2D" parent="."]
+position = Vector2( 33.1207, 1.04703 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.08
+autostart = true
+
+[node name="anim" type="Timer" parent="Timer"]
+wait_time = 0.1
+autostart = true
+
+[node name="Timer2" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.945098, 1, 0, 1 )
+margin_left = 23.0
+margin_top = -17.0
+margin_right = 78.0
+margin_bottom = 6.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = SubResource( 1 )
+text = "35/35"
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2( -0.65078, 0 )
+occluder = SubResource( 2 )
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer/anim" to="." method="_on_anim_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5,45x39mm_AR_AN94-2rd-1800rpm.ogg-17a375517f227e8d39987464ca3d18af.oggstr"
+
+[deps]
+
+source_file="res://5,45x39mm_AR_AN94-2rd-1800rpm.ogg"
+dest_files=[ "res://.import/5,45x39mm_AR_AN94-2rd-1800rpm.ogg-17a375517f227e8d39987464ca3d18af.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
